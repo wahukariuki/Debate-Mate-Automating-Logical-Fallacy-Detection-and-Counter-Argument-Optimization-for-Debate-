@@ -11,6 +11,7 @@ import 'features/auth/screens/email_link_callback_screen.dart';
 import 'features/auth/screens/debug_auth_screen.dart';
 import 'features/auth/screens/email_verification_callback_screen.dart';
 import 'features/dashboard/screens/debater_dashboard.dart';
+import 'features/dashboard/screens/enhanced_debater_dashboard.dart';
 import 'features/dashboard/screens/admin_dashboard.dart';
 import 'features/debate/screens/argument_submit_screen.dart';
 import 'features/debate/screens/argument_list_screen.dart';
@@ -175,7 +176,7 @@ class AppRouter {
         GoRoute(
           path: debaterDashboard,
           name: 'debater-dashboard',
-          builder: (context, state) => const DebaterDashboard(),
+          builder: (context, state) => const EnhancedDebaterDashboard(),
         ),
         GoRoute(
           path: adminDashboard,
