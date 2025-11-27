@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:logger/logger.dart';
+
+import 'firebase_options.dart';
+import 'core/router/app_router.dart';
+import 'core/theme/app_theme.dart';
+import 'core/constants/app_constants.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  final logger = Logger();
+  
+  try {
+    // Initialize Firebase
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    logger.i('Firebase initialized successfully');
+  } catch (e) {
+    logger.e('Failed to initialize Firebase: $e');
+    // Continue without Firebase for now
+  }
+
+  runApp(
+    const ProviderScope(
+      child: DebateMateApp(),
+    ),
+  );
+}
+
+/// Main application widget
+class DebateMateApp extends ConsumerWidget {
+  const DebateMateApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(appRouterProvider);
+
+    return MaterialApp.router(
+      title: AppConstants.appName,
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      routerConfig: router,
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: const TextScaler.linear(1.0), // Prevent font scaling issues
+          ),
+          child: child!,
+        );
+      },
+    );
+  }
+}
