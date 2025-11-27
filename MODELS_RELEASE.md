@@ -78,8 +78,8 @@ models/fallacy_model/
 ### 2. Counterargument Generation Model
 
 #### Model Details
-- **Model Name:** `Qwen/Qwen2-0.5B-Instruct`
-- **Base Architecture:** Qwen2 (Decoder-only Causal Language Model)
+- **Model Name:** `google/flan-t5-small`
+- **Base Architecture:** T5
 - **Task Type:** Text-to-Text Generation
 - **Framework:** PyTorch / Transformers / OpenVINO (optional)
 - **Model Size:** ~1.0 GB (compressed)
@@ -146,7 +146,7 @@ bert_model = AutoModelForSequenceClassification.from_pretrained(
 from transformers import AutoModelForCausalLM
 
 t5_model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen2-0.5B-Instruct",
+    "google/flan-t5-small",
     trust_remote_code=True
 )
 ```
@@ -163,10 +163,6 @@ pip install huggingface_hub
 huggingface-cli download mempooltx/bert-base-fallacy-detection --local-dir ./models/fallacy_model
 ```
 
-3. **Download Counterargument Model:**
-```bash
-huggingface-cli download Qwen/Qwen2-0.5B-Instruct --local-dir ./models/counter_model
-```
 
 ### Option 3: Use Pre-downloaded Models
 
