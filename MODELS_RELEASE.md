@@ -397,7 +397,6 @@ If you use these models in your research or project, please cite:
 For issues, questions, or contributions:
 
 - **GitHub Issues:** [Open an issue](https://github.com/yourusername/debate-mate/issues)
-- **Email:** wahuabi@gmail.com
 - **Documentation:** See [README.md](README.md) for setup instructions
 
 ---
@@ -406,7 +405,6 @@ For issues, questions, or contributions:
 
 - **HuggingFace** for model hosting and transformers library
 - **mempooltx** for the BERT fallacy detection model
-- **Qwen Team** for the Qwen2 model architecture
 - **PyTorch Team** for the deep learning framework
 - All contributors and users of DebateMate
 
